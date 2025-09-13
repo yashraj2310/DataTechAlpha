@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 5 - JavaScript Basics</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      color: #333;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 10px 0;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    form {
+      background: #fff;
+      padding: 20px;
+      margin: 20px auto;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      max-width: 400px;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+    label {
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    #message {
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Day 5: JavaScript Interactivity</h1>
+
+  <button id="colorBtn">Click to Change Background Color</button>
+
+  <h2>Registration Form</h2>
+  <form id="myForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name">
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email">
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password">
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <p id="message"></p>
+
+  <script>
+    const btn = document.getElementById("colorBtn");
+    btn.addEventListener("click", function() {
+      const colors = ["#f28b82", "#aecbfa", "#ccff90", "#ffd6a5", "#bdb2ff"];
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      document.body.style.backgroundColor = randomColor;
+    });
+
+    const form = document.getElementById("myForm");
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const message = document.getElementById("message");
+
+      if (name === "" || email === "" || password === "") {
+        message.textContent = " All fields are required!";
+        message.style.color = "red";
+      } else {
+        message.textContent = "Form submitted successfully!";
+        message.style.color = "green";
+      }
+    });
+  </script>
+
+</body>
+</html>
